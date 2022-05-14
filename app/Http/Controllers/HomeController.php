@@ -133,19 +133,17 @@ class HomeController extends Controller
                 }
             }
 
-            $sv = TKB::where("msv", $tkb['msv'])->first();
-            if ($sv){
-                $sv->tkb = $tkb['tkb'];
+            $sinhVien = TKB::where("msv", $tkb['msv'])->first();
+            if (!$sinhVien){
+                $sinhVien = new TKB();
+                $sinhVien->ho_ten = $tkb['ho_ten'];
+                $sinhVien->msv = $tkb['msv'];
+                $sinhVien->lop = $tkb['lop'];
+                $sinhVien->hoc_ky = $tkb['hoc_ky'];
             }
-            else{
-                $sv = new TKB();
-                $sv->ho_ten = $tkb['ho_ten'];
-                $sv->msv = $tkb['msv'];
-                $sv->lop = $tkb['lop'];
-                $sv->hoc_ky = $tkb['hoc_ky'];
-                $sv->tkb = $tkb['tkb'];
-            }
-            $sv->save();
+            $sinhVien->tkb = $tkb['tkb'];
+
+            $sinhVien->save();
 
             return redirect()->back()->with("success", "Tải lên tkb thành công");
         }
