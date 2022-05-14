@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b7f67deb-49d9-464d-9ab1-cb8fcababa03" name="tkb" url="http://tkbictu.ga">
+        <fileTransfer rootFolder="/domains/tkbictu.ga/public_html" host="tkbictu.ga" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
