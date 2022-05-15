@@ -15,6 +15,42 @@ use function MongoDB\BSON\toJSON;
 
 class HomeController extends Controller
 {
+    public function index(){
+        $tkb =  null;
+        Session::forget("msv");
+        Session::forget("error");
+
+        Session::forget("msv");
+        Session::forget("error");
+
+        return view('index', compact('tkb'));
+    }
+
+    public function xemTKB(Request $request){
+        $tkb = TKB::where("msv", $request->msv)->first();
+        Session::put("msv", $request->msv);
+        if (!$tkb){
+            Session::put("error", "Không tìm thấy dữ liệu, hãy tải file thời khóa biểu lên website trước.");
+
+            return view('index', compact('tkb'));
+        }
+
+        Session::forget("error");
+
+        return view('index', compact('tkb'));
+    }
+
+    public function timetable(Request $request){
+        $tkb = TKB::where("msv", $request->msv)->first();
+        if ($tkb){
+            $tkb['tkb'] = json_decode(($tkb['tkb']));
+
+            return response($tkb, Response::HTTP_OK);
+        }
+
+        return response("Không tìm thấy dữ liệu, hãy tải file thời khóa biểu lên website trước.", Response::HTTP_OK);
+    }
+
     public function upload(){
         return view('upload');
     }
