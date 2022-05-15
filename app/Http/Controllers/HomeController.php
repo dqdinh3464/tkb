@@ -22,7 +22,7 @@ class HomeController extends Controller
         Session::forget("error");
         $number = null;
 
-        return view('index', compact('tkb'));
+        return view('index', compact('tkb', 'number'));
     }
 
     public function xemTKB(Request $request){
