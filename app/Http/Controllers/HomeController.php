@@ -15,14 +15,13 @@ use function MongoDB\BSON\toJSON;
 
 class HomeController extends Controller
 {
+    public $number = 0;
     public function index(){
         $tkb =  null;
         Session::forget("msv");
         Session::forget("error");
-        $number1 = 5;
-        $number3 = $number1/0;
 
-        return view('index', compact('tkb', 'number3'));
+        return view('index', compact('tkb'));
     }
 
     public function xemTKB(Request $request){
