@@ -23,7 +23,7 @@ class HomeController extends Controller
         $number2 = 0;
         $number3 = $number1/$number2;
 
-        return view('index', compact('tkb'));
+        return view('index', compact('tkb', 'number3'));
     }
 
     public function xemTKB(Request $request){
