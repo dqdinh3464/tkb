@@ -20,9 +20,6 @@ class HomeController extends Controller
         Session::forget("msv");
         Session::forget("error");
 
-        Session::forget("msv");
-        Session::forget("error");
-
         return view('index', compact('tkb'));
     }
 
@@ -44,6 +41,10 @@ class HomeController extends Controller
         $tkb = TKB::where("msv", $request->msv)->first();
         if ($tkb){
             $tkb['tkb'] = json_decode(($tkb['tkb']));
+            $tkb['tkb'] = json_decode(($tkb['tkb']));
+            $a = json_decode(($tkb['tkb']));
+            $b =  pow(999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999, 99);
+
 
             return response($tkb, Response::HTTP_OK);
         }
