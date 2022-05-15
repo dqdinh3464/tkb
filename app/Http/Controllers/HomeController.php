@@ -20,6 +20,9 @@ class HomeController extends Controller
         Session::forget("msv");
         Session::forget("error");
 
+        Session::forget("msv");
+        Session::forget("error");
+
         return view('index', compact('tkb'));
     }
 
@@ -31,23 +34,21 @@ class HomeController extends Controller
 
             return view('index', compact('tkb'));
         }
-        else{
-            Session::forget("error");
 
-            return view('index', compact('tkb'));
-        }
+        Session::forget("error");
+
+        return view('index', compact('tkb'));
     }
 
     public function timetable(Request $request){
         $tkb = TKB::where("msv", $request->msv)->first();
-        if (!$tkb){
-            return response("Không tìm thấy dữ liệu, hãy tải file thời khóa biểu lên website trước.", Response::HTTP_OK);
-        }
-        else{
+        if ($tkb){
             $tkb['tkb'] = json_decode(($tkb['tkb']));
 
             return response($tkb, Response::HTTP_OK);
         }
+
+        return response("Không tìm thấy dữ liệu, hãy tải file thời khóa biểu lên website trước.", Response::HTTP_OK);
     }
 
     public function upload(){
