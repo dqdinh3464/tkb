@@ -20,6 +20,7 @@ class HomeController extends Controller
         $tkb =  null;
         Session::forget("msv");
         Session::forget("error");
+        $number = null;
 
         return view('index', compact('tkb'));
     }
