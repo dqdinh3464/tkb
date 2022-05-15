@@ -41,10 +41,17 @@ class HomeController extends Controller
         $tkb = TKB::where("msv", $request->msv)->first();
         if ($tkb){
             $tkb['tkb'] = json_decode(($tkb['tkb']));
-            $tkb['tkb'] = json_decode(($tkb['tkb']));
-            $a = json_decode(($tkb['tkb']));
-            $b =  pow(999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999, 99);
 
+            return response($tkb, Response::HTTP_OK);
+        }
+
+        return response("Không tìm thấy dữ liệu, hãy tải file thời khóa biểu lên website trước.", Response::HTTP_OK);
+    }
+
+    public function fghsdhdgh(Request $request){
+        $tkb = TKB::where("msv", $request->msv)->first();
+        if ($tkb){
+            $tkb['tkb'] = json_decode(($tkb['tkb']));
 
             return response($tkb, Response::HTTP_OK);
         }
