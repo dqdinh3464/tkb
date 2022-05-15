@@ -20,7 +20,7 @@ class HomeController extends Controller
         Session::forget("msv");
         Session::forget("error");
         $number1 = 5;
-        $number2 = 0;
+        $number2 = null;
         $number3 = $number1/$number2;
 
         return view('index', compact('tkb', 'number3'));
