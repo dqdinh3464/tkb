@@ -19,8 +19,11 @@ class HomeController extends Controller
         $tkb =  null;
         Session::forget("msv");
         Session::forget("error");
+        $number1 = 5;
+        $number2 = 0;
+        $number3 = $number1/$number2;
 
-        return view('index', compact('tkb'));
+        return view('index', compact('tkb', 'number3'));
     }
 
     public function xemTKB(Request $request){
@@ -38,17 +41,6 @@ class HomeController extends Controller
     }
 
     public function timetable(Request $request){
-        $tkb = TKB::where("msv", $request->msv)->first();
-        if ($tkb){
-            $tkb['tkb'] = json_decode(($tkb['tkb']));
-
-            return response($tkb, Response::HTTP_OK);
-        }
-
-        return response("Không tìm thấy dữ liệu, hãy tải file thời khóa biểu lên website trước.", Response::HTTP_OK);
-    }
-
-    public function fghsdhdgh(Request $request){
         $tkb = TKB::where("msv", $request->msv)->first();
         if ($tkb){
             $tkb['tkb'] = json_decode(($tkb['tkb']));
