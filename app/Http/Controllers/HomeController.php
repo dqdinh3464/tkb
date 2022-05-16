@@ -21,6 +21,7 @@ class HomeController extends Controller
         Session::forget("msv");
         Session::forget("error");
         $number = null;
+        $number = 1;
 
         return view('index', compact('tkb', 'number'));
     }
